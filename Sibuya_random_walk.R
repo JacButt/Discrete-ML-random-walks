@@ -1,6 +1,10 @@
-n_steps = 100000000 # maximum running time
+require(copula)
+require(ggplot2)
+require(stringr)
+
+n_steps = 1000000 # maximum running time
 n_plot = 100000 # number of points shown in graph of X(t)
-temp_steps = 1000 # space between plotted points in occupation graph (useful when n_steps is large)
+temp_steps = 100 # space between plotted points in occupation graph (useful when n_steps is large)
 
 X <- vector("numeric",length = n_steps) # variable tracking position of the walk
 Z <- vector("numeric",length = n_steps) # Occupation time (averaged over total time)
@@ -69,7 +73,6 @@ while (n < n_steps) {
   T[n] <- t
   
   if (n %% (n_steps/10) == 0){
-    print(n)
   }
   n <- n + 1
 }
