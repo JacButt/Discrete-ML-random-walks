@@ -2,6 +2,8 @@ require(copula)
 require(ggplot2)
 require(stringr)
 
+set.seed(1) #Used for debugging purposes
+
 n_steps = 1000000 # maximum running time
 n_plot = 100000 # number of points shown in graph of X(t)
 temp_steps = 100 # space between plotted points in occupation graph (useful when n_steps is large)
@@ -91,3 +93,4 @@ while (n < n_steps) {
   ggplot(NULL,aes(x = T[seq_along(T)%%temp_steps == 0], y = Z[seq_along(Z)%%temp_steps == 0])) + 
     geom_line() + 
     labs(x = "Time", y = "Averaged Occupation time of A", title = str_glue("alpha1 = ", alpha1, ", alpha2 = ", alpha2, ". A = [", A_left, ", ", A_right, "]") )
+
